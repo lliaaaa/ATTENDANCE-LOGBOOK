@@ -2,13 +2,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class Student(db.Model):
-    __tablename__ = 'students'
+class Record:
+    __tablename__ = 'records'
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    course = db.Column(db.String(100), nullable=False)
+    course = db.Column(db.String(120), nullable=False)
+    year = db.Column(db.Integer, nullable=False)
+program = db.Column(db.String(100), nullable=False)
 
     def __repr__(self):
-        return f"<Student {self.name}>"
+        return Record {self.name}>"

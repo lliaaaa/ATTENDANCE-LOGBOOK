@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from models import db, Student
+from models import db, Record
 from config import Config
 
 app = Flask(__name__)
@@ -13,31 +13,33 @@ with app.app_context():
 # --- Home Route (Read) ---
 @app.route('/')
 def index():
-    students = Student.query.all()
-    return render_template('index.html', students=students)
+    records = Record.query.all()
+    return render_template('index.html', records=records)
 
 # --- Create Route ---
 @app.route('/add', methods=['GET', 'POST'])
-def add_student():
+def add_record():
     if request.method == 'POST':
         name = request.form['name']
-        email = request.form['email']
+        program = request.form['program']
+        year = request.form['year']
         course = request.form['course']
-        new_student = Student(name=name, email=email, course=course)
-        db.session.add(new_student)
+        new_record = Record(name=name, program=program, year=year, course=course)
+        db.session.add(new_record)
         db.session.commit()
-        flash('Student added successfully!')
+        flash('Record added successfully!')
         return redirect(url_for('index'))
     return render_template('add.html')
 
 # --- Update Route ---
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
-def edit_student(id):
-    student = Student.query.get_or_404(id)
+def edit_record(id):
+    record = Record.query.get_or_404(id)
     if request.method == 'POST':
-        student.name = request.form['name']
-        student.email = request.form['email']
-        student.course = request.form['course']
+        record.name = request.form['name']
+        record.program = request.form['program']
+        record.year = request.form['year'],
+        record.course =  request.form['course']
         db.session.commit()
         flash('Student updated successfully!')
         return redirect(url_for('index'))

@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Edit Student</h2>
+<h2>Edit Record</h2>
 <form method="POST">
     <div class="mb-3">
         <label>Name</label>
-        <input type="text" name="name" class="form-control" value="{{ student.name }}" required>
+        <input type="text" name="name" class="form-control" value="{{ record.name }}" required>
     </div>
     <div class="mb-3">
-        <label>Email</label>
-        <input type="email" name="email" class="form-control" value="{{ student.email }}" required>
+        <label>Program</label>
+        <input type="text" name="program" class="form-control" value="{{ record.program }}" required>
+    </div>
+    <div class="mb-3">
+        <label>Year</label>
+        <input type="number" name="year" class="form-control" value="{{ record.year }}" required>
     </div>
     <div class="mb-3">
         <label>Course</label>
-        <input type="text" name="course" class="form-control" value="{{ student.course }}" required>
+        <input type="text" name="course" class="form-control" value="{{ record.course }}" required>
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
 </form>

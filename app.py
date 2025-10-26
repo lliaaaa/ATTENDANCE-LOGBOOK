@@ -41,17 +41,17 @@ def edit_record(id):
         record.year = request.form['year'],
         record.course =  request.form['course']
         db.session.commit()
-        flash('Student updated successfully!')
+        flash('Record updated successfully!')
         return redirect(url_for('index'))
-    return render_template('edit.html', student=student)
+    return render_template('edit.html', record=record)
 
 # --- Delete Route ---
 @app.route('/delete/<int:id>')
-def delete_student(id):
-    student = Student.query.get_or_404(id)
-    db.session.delete(student)
+def delete_record(id):
+    student = Record.query.get_or_404(id)
+    db.session.delete(record)
     db.session.commit()
-    flash('Student deleted successfully!')
+    flash('Record deleted successfully!')
     return redirect(url_for('index'))
 
 if __name__ == '__main__':

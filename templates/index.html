@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Students List</h2>
-<a href="{{ url_for('add_student') }}" class="btn btn-primary mb-3">Add Student</a>
+<h2>Records List</h2>
+<a href="{{ url_for('add_record') }}" class="btn btn-primary mb-3">Add Record</a>
 <table class="table table-bordered">
     <thead>
-        <tr><th>ID</th><th>Name</th><th>Email</th><th>Course</th><th>Actions</th></tr>
+        <tr><th>ID</th><th>Name</th><th>Proogram</th><th>Year</th><th>Course</th><th>Actions</th></tr>
     </thead>
     <tbody>
-        {% for student in students %}
+        {% for record in records %}
         <tr>
-            <td>{{ student.id }}</td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.email }}</td>
-            <td>{{ student.course }}</td>
+            <td>{{ record.id }}</td>
+            <td>{{ record.name }}</td>
+            <td>{{ record.program }}</td>
+            <td>{{ record.year }}</td>
+            <td>{{ record.course }}</td>
             <td>
-                <a href="{{ url_for('edit_student', id=student.id) }}" class="btn btn-warning btn-sm">Edit</a>
-                <a href="{{ url_for('delete_student', id=student.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                <a href="{{ url_for('edit_record', id=record.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{{ url_for('delete_record', id=record.id) }}" class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
         {% endfor %}

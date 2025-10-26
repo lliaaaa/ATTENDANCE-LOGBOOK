@@ -48,7 +48,7 @@ def edit_record(id):
 # --- Delete Route ---
 @app.route('/delete/<int:id>')
 def delete_record(id):
-    student = Record.query.get_or_404(id)
+    record = Record.query.get_or_404(id)
     db.session.delete(record)
     db.session.commit()
     flash('Record deleted successfully!')

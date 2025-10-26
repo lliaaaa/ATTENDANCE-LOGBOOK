@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Add New Student</h2>
+<h2>Add New Record</h2>
 <form method="POST">
     <div class="mb-3">
         <label>Name</label>
         <input type="text" name="name" class="form-control" required>
     </div>
     <div class="mb-3">
-        <label>Email</label>
-        <input type="email" name="email" class="form-control" required>
+        <label>Program</label>
+        <input type="text" name="program" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Year</label>
+        <input type="number" name="year" class="form-control" required>
     </div>
     <div class="mb-3">
         <label>Course</label>
